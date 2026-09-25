@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[Your Name] — [Your Role]</title>
+<meta name="description" content="Portfolio of [Your Name], a [your role] based in [your city].">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PORTFOLIO BOILERPLATE
+     Edit the variables below to reskin this template for anyone.
+     Every color, type choice and spacing scale lives here —
+     nothing else in the file needs to change to re-theme it.
+     ============================================================ */
+  :root {
+    /* ---- palette: swap these six values for a new identity ---- */
+    --ink:        #1c2321;   /* primary text */
+    --ink-soft:   #4a5450;   /* secondary text */
+    --paper:      #f3f1ea;   /* page background */
+    --paper-dim:  #e9e6db;   /* section background */
+    --accent:     #5b6e4f;   /* moss green — links, marks, CTA */
+    --accent-ink: #f3f1ea;   /* text sitting on --accent */
+    --line:       rgba(28, 35, 33, 0.14);
+
+    /* ---- type ---- */
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* ---- rhythm ---- */
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+    --max: 74rem;
+    --radius: 3px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink:        #eeeae0;
+      --ink-soft:   #a9b0a6;
+      --paper:      #14181a;
+      --paper-dim:  #1b201f;
+      --accent:     #9fc27f;
+      --accent-ink: #14181a;
+      --line:       rgba(238, 234, 224, 0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink:        #eeeae0;
+    --ink-soft:   #a9b0a6;
+    --paper:      #14181a;
+    --paper-dim:  #1b201f;
+    --accent:     #9fc27f;
+    --accent-ink: #14181a;
+    --line:       rgba(238, 234, 224, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .eyebrow {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---- nav ---- */
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .site-nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+  }
+  .site-nav .mark {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+  }
+  .site-nav nav { display: flex; gap: 1.75rem; }
+  .site-nav nav a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+  .site-nav nav a:hover, .site-nav nav a:focus-visible { color: var(--ink); }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.6rem;
+    color: var(--ink);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 640px) {
+    .site-nav nav { display: none; }
+    .site-nav nav.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 4rem;
+      left: 0; right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem var(--gutter) 1.5rem;
+      gap: 1rem;
+    }
+    .nav-toggle { display: block; }
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4rem);
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: end;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+    letter-spacing: -0.01em;
+  }
+  .hero .role {
+    margin-top: 0.9rem;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 34ch;
+  }
+  .hero .aside {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    border-left: 1px solid var(--line);
+    padding-left: 1.5rem;
+  }
+  .hero .aside p + p { margin-top: 0.9rem; }
+  .cta-row { margin-top: 1.75rem; display: flex; gap: 0.85rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.15rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--ink-soft); }
+
+  /* ---- section shell ---- */
+  section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  section.dim { background: var(--paper-dim); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1rem;
+  }
+  .section-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .section-head .count { color: var(--ink-soft); font-size: 0.9rem; }
+
+  /* ---- about ---- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .about-grid p { max-width: 62ch; color: var(--ink-soft); }
+  .about-grid p + p { margin-top: 1rem; }
+  .facts { list-style: none; margin: 0; padding: 0; }
+  .facts li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.94rem;
+  }
+  .facts li span:first-child { color: var(--ink-soft); }
+
+  /* ---- work: numbered list, not identical cards ---- */
+  .work-item {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .work-item:first-child { border-top: 1px solid var(--line); }
+  .work-index { font-family: var(--font-display); color: var(--ink-soft); font-size: 1.1rem; }
+  .work-title { font-size: 1.2rem; margin-bottom: 0.35rem; }
+  .work-title a { text-decoration: none; }
+  .work-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .work-desc { color: var(--ink-soft); max-width: 56ch; font-size: 0.96rem; }
+  .work-tags { margin-top: 0.6rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.15rem 0.5rem;
+  }
+  .work-year { color: var(--ink-soft); font-size: 0.9rem; white-space: nowrap; }
+  @media (max-width: 640px) {
+    .work-item { grid-template-columns: 2.25rem 1fr; }
+    .work-year { grid-column: 2; }
+  }
+
+  /* ---- skills ---- */
+  .skill-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .skill-group h3 { font-size: 0.95rem; color: var(--ink-soft); font-weight: 500; margin-bottom: 0.75rem; }
+  .skill-group ul { list-style: none; margin: 0; padding: 0; }
+  .skill-group li { padding: 0.35rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+  @media (max-width: 720px) { .skill-groups { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .skill-groups { grid-template-columns: 1fr; } }
+
+  /* ---- contact / footer ---- */
+  .contact-inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .contact-inner h2 {
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    max-width: 20ch;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0.5rem; text-align: right; }
+  .contact-links a { text-decoration: none; font-size: 1rem; }
+  .contact-links a:hover { color: var(--accent); }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .aside { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-inner { flex-direction: column; align-items: flex-start; }
+    .contact-links { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="mark" href="#top">[Your Name]</a>
+    <nav id="primary-nav">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="wrap">
+    <section class="hero" style="border-bottom:1px solid var(--line);">
+      <div>
+        <p class="eyebrow">Portfolio — [City, Country]</p>
+        <h1>mercy bereke</h1>
+        <p class="role">[Your role or one-line pitch — e.g. "Full-stack developer building fast, well-made web products."]</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#work">View work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="aside">
+        <p>[Short supporting line — what you focus on, what kind of work you take on, or a current availability note.]</p>
+        <p>Based in [City] · Open to [freelance / full-time / collaborations]</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><h2>About</h2></div>
+      <div class="about-grid">
+        <div>
+          <p>[Paragraph one — who you are, what you do, and the kind of problems you like solving. Keep it in your own voice.]</p>
+          <p>[Paragraph two — a bit of background, how you got here, or what you're currently focused on.]</p>
+        </div>
+        <ul class="facts">
+          <li><span>Based in</span><span>[City, Country]</span></li>
+          <li><span>Focus</span><span>[e.g. Web apps, product design]</span></li>
+          <li><span>Experience</span><span>[e.g. 4+ years]</span></li>
+          <li><span>Currently</span><span>[e.g. Building at Company]</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section id="work" class="dim">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="count">03</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-index">01</span>
+        <div>
+          <h3 class="work-title"><a href="#" target="_blank" rel="noopener">[Project One Name]</a></h3>
+          <p class="work-desc">[One or two sentences on what the project is and the problem it solves.]</p>
+          <div class="work-tags"><span class="tag">[Tech]</span><span class="tag">[Tech]</span><span class="tag">[Tech]</span></div>
+        </div>
+        <span class="work-year">[2026]</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-index">02</span>
+        <div>
+          <h3 class="work-title"><a href="#" target="_blank" rel="noopener">[Project Two Name]</a></h3>
+          <p class="work-desc">[One or two sentences on what the project is and the problem it solves.]</p>
+          <div class="work-tags"><span class="tag">[Tech]</span><span class="tag">[Tech]</span></div>
+        </div>
+        <span class="work-year">[2025]</span>
+      </div>
+
+      <div class="work-item">
+        <span class="work-index">03</span>
+        <div>
+          <h3 class="work-title"><a href="#" target="_blank" rel="noopener">[Project Three Name]</a></h3>
+          <p class="work-desc">[One or two sentences on what the project is and the problem it solves.]</p>
+          <div class="work-tags"><span class="tag">[Tech]</span><span class="tag">[Tech]</span><span class="tag">[Tech]</span></div>
+        </div>
+        <span class="work-year">[2025]</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><h2>Skills</h2></div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul>
+            <li>[Language]</li>
+            <li>[Language]</li>
+            <li>[Language]</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Frameworks &amp; tools</h3>
+          <ul>
+            <li>[Framework]</li>
+            <li>[Framework]</li>
+            <li>[Tool]</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Other</h3>
+          <ul>
+            <li>[Skill]</li>
+            <li>[Skill]</li>
+            <li>[Skill]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="dim">
+    <div class="wrap contact-inner">
+      <h2>Let's work together.</h2>
+      <div class="contact-links">
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="#" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">Twitter / X</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:0.5rem;">
+    <span>© <span id="year"></span> [Your Name]. All rights reserved.</span>
+    <span>Built with this template.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
